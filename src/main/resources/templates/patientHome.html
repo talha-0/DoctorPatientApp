@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My Patient Home Page</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <style>
+    body {
+      padding-top: 70px;
+    }
+    footer{
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+    }
+    .navbar-brand {
+      font-size: 1.5rem;
+    }
+    .navbar-toggler-icon {
+      background-color: #fff;
+    }
+    .navbar-nav .nav-link {
+      font-size: 1.2rem;
+      padding-right: 1rem;
+      padding-left: 1rem;
+    }
+    .form-inline label {
+      margin-right: 1rem;
+    }
+    .container {
+      margin-top: 2rem;
+      margin-bottom: 2rem;
+    }
+    @media (max-width: 576px) {
+      body {
+        padding-top: 4.5rem;
+      }
+      .navbar-nav .nav-link {
+        padding-right: 0.5rem;
+        padding-left: 0.5rem;
+      }
+      .form-inline label {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-md navbar-dark bg-primary fixed-top">
+  <a class="navbar-brand" href="#">Patient Home Page</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarCollapse">
+    <ul class="navbar-nav nav-fill mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="#">Appointments</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Prescriptions</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Medical Records</a>
+      </li>
+    </ul>
+    <form class="form-inline mt-2 mt-md-0">
+      <label>
+        <input class="form-control mr-sm-2" type="text" placeholder="Search"/>
+      </label>
+      <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+    </form>
+    <ul class="navbar-nav nav-fill ml-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="#">Profile</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Settings</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Logout</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container">
+  <h1 class="text-center mb-4">Welcome <span th:text="${fName}" th:remove="tag">userName</span></h1>
+  <div class="row">
+    <div class="col-md-4 offset-md-4">
+      <p>Here you can access your appointments, prescriptions, and medical records.</p>
+    </div>
+  </div>
+</div>
+
+
+<footer class="footer bg-primary mt-auto py-3">
+  <div class="container">
+    <span class="text-light">© 2023 My Patient Home Page, Inc.</span>
+  </div>
+</footer>
+
+</body>
+</html>
