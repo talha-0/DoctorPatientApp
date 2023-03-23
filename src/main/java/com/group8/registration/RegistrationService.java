@@ -3,10 +3,7 @@ package com.group8.registration;
 import com.group8.email.EmailSender;
 import com.group8.registration.token.ConfirmationToken;
 import com.group8.registration.token.ConfirmationTokenService;
-import com.group8.userapp.AppUser;
-import com.group8.userapp.AppUserService;
-import com.group8.userapp.Doctor;
-import com.group8.userapp.Patient;
+import com.group8.appuser.*;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -27,11 +24,7 @@ public class RegistrationService {
         boolean isValidEmail = emailValidator.test(registrationRequest.getEmail());
         if(!isValidEmail)
             return "register";
-        AppUser appUser;
-        if(role.equalsIgnoreCase("patient"))
-            appUser=new Patient(registrationRequest.getFirstName(), registrationRequest.getLastName(), registrationRequest.getEmail(), registrationRequest.getPassword());
-        else
-            appUser=new Doctor(registrationRequest.getFirstName(), registrationRequest.getLastName(), registrationRequest.getEmail(), registrationRequest.getPassword());
+        AppUser appUser= AppUserFactory.createUser(role, registrationRequest.getFirstName(), registrationRequest.getLastName(), registrationRequest.getEmail(), registrationRequest.getPassword());
         String token = appUserService.signUpUser(appUser);
         if(token.equals("emailTaken"))
             return token;

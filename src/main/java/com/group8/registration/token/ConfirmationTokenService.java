@@ -1,6 +1,6 @@
 package com.group8.registration.token;
 
-import com.group8.userapp.AppUser;
+import com.group8.appuser.AppUser;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 

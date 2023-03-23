@@ -1,6 +1,6 @@
 package com.group8.registration.token;
 
-import com.group8.userapp.AppUser;
+import com.group8.appuser.AppUser;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
