@@ -20,10 +20,10 @@ public class RegistrationService {
 
     public String register(String role, RegistrationRequest registrationRequest) {
         if(!role.equalsIgnoreCase("patient") && !role.equalsIgnoreCase("doctor"))
-            return "register";
+            return "registration";
         boolean isValidEmail = emailValidator.test(registrationRequest.getEmail());
         if(!isValidEmail)
-            return "register";
+            return "registration";
         AppUser appUser= AppUserFactory.createUser(role, registrationRequest.getFirstName(), registrationRequest.getLastName(), registrationRequest.getEmail(), registrationRequest.getPassword());
         String token = appUserService.signUpUser(appUser);
         if(token.equals("emailTaken"))

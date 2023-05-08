@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>My Patient Home Page</title>
@@ -14,19 +14,15 @@
       bottom: 0;
       width: 100%;
     }
-    .navbar-brand {
-      font-size: 1.5rem;
+    .navbar-toggler {
+      display: block;
     }
-    .navbar-toggler-icon {
-      background-color: #fff;
-    }
-    .navbar-nav .nav-link {
-      font-size: 1.2rem;
-      padding-right: 1rem;
-      padding-left: 1rem;
+    .form-inline{
+      margin:0 !important;
+      align-content: center;
     }
     .form-inline label {
-      margin-right: 1rem;
+      margin-right: 1px;
     }
     .container {
       margin-top: 2rem;
@@ -41,51 +37,46 @@
         padding-left: 0.5rem;
       }
       .form-inline label {
-        display: none;
+        display: block;
+      }
+      .form-inline label{
+        margin: 0 !important;
       }
     }
+
   </style>
 </head>
 <body>
 <nav class="navbar navbar-expand-md navbar-dark bg-primary fixed-top">
-  <a class="navbar-brand" href="#">Patient Home Page</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="document.getElementById('navbarCollapse').classList.toggle('show')">
     <span class="navbar-toggler-icon"></span>
   </button>
+  <form class="form-inline mt-2 mt-md-0">
+    <label>
+      <input class="form-control mr-sm-2" type="text" placeholder="Search"/>
+    </label>
+    <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+  </form>
   <div class="collapse navbar-collapse" id="navbarCollapse">
-    <ul class="navbar-nav nav-fill mr-auto">
-      <li class="nav-item">
-        <a class="nav-link" href="#">Appointments</a>
-      </li>
+    <ul class="navbar-nav nav-fill ml-auto">
       <li class="nav-item">
         <a class="nav-link" href="#">Prescriptions</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Medical Records</a>
       </li>
-    </ul>
-    <form class="form-inline mt-2 mt-md-0">
-      <label>
-        <input class="form-control mr-sm-2" type="text" placeholder="Search"/>
-      </label>
-      <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
-    </form>
-    <ul class="navbar-nav nav-fill ml-auto">
       <li class="nav-item">
         <a class="nav-link" href="#">Profile</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Settings</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Logout</a>
+        <a class="nav-link" href="/logout">Logout</a>
       </li>
     </ul>
   </div>
 </nav>
 
 <div class="container">
-  <h1 class="text-center mb-4">Welcome <span th:text="${fName}" th:remove="tag">userName</span></h1>
+  <h1 class="text-center mb-4">Welcome <span>userName</span></h1>
   <div class="row">
     <div class="col-md-4 offset-md-4">
       <p>Here you can access your appointments, prescriptions, and medical records.</p>
@@ -96,7 +87,7 @@
 
 <footer class="footer bg-primary mt-auto py-3">
   <div class="container">
-    <span class="text-light">© 2023 My Patient Home Page, Inc.</span>
+    <span class="text-light">© 2023 HealthCareApp, Inc.</span>
   </div>
 </footer>
 

@@ -26,4 +26,8 @@ public class PatientController {
 
         return "patientHome"; // returns the name of your home page HTML template
     }
+    @GetMapping("/appointments")
+    public String showAppointmentPage() {
+        return "patientAppointment"; // returns the name of your home page HTML template
+    }
 }

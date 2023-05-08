@@ -1,6 +1,5 @@
 package com.group8.security;
 
-import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.security.core.Authentication;
@@ -15,14 +14,16 @@ import java.util.Collection;
 @Component
 public class CustomAuthSuccessHandler implements AuthenticationSuccessHandler {
     @Override
-    public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
+    public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException {
         Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
         if (authorities.contains(new SimpleGrantedAuthority("Doctor"))) {
             response.sendRedirect("/doctor/home");
         } else if (authorities.contains(new SimpleGrantedAuthority("Patient"))) {
             response.sendRedirect("/patient/home");
+        } else if (authorities.contains(new SimpleGrantedAuthority("Admin"))) {
+            response.sendRedirect("/admin/home");
         } else {
-            response.sendRedirect("/home");
+                response.sendRedirect("/logout");
         }
     }
 }

@@ -25,14 +25,9 @@ public class WebSecurityConfig {
         http.csrf().disable()
                 .authorizeHttpRequests((authorize) ->
                         authorize.requestMatchers("/registration/**").permitAll()
-                )
-                .authorizeHttpRequests((authorize) ->
-                        authorize.requestMatchers("/doctor/**").hasAuthority("Doctor")
-                )
-                .authorizeHttpRequests((authorize) ->
-                        authorize.requestMatchers("/patient/**").hasAuthority("Patient")
-                )
-                .formLogin()
+                                .requestMatchers("/doctor/**").hasAuthority("Doctor")
+                                .requestMatchers("/patient/**").hasAuthority("Patient")
+                ).formLogin()
                     .successHandler(authenticationSuccessHandler)
                     .permitAll();
         return http.build();
